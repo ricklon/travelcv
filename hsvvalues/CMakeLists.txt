@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( hsvvalues )
+find_package( OpenCV )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( hsvvalues hsvvalues.cpp )
+target_link_libraries( hsvvalues ${OpenCV_LIBS} )

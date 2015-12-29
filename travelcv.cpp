@@ -26,7 +26,7 @@ int main( int argc, char** argv )
     resize(dst, dst, cvSize(0, 0), kRescaleFactor, kRescaleFactor);
 
     namedWindow( "Source Window", CV_WINDOW_NORMAL );
-    imshow("Source Windowe",dst);
+    imshow("Source Window",dst);
 
     cv::threshold(img_object, work_object, 0, 255, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
     // find contours (if always so easy to segment as your image, you could just add the black/rect pixels to a vector)
