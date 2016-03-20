@@ -21,13 +21,14 @@ int main( int argc, char** argv )
   { readme(); return -1; }
 
   Mat img_1 = imread( argv[1]);//, CV_LOAD_IMAGE_GRAYSCALE );
-  Mat img_2 = imread( argv[2]);//, CV_LOAD_IMAGE_GRAYSCALE );
+  Mat img_2 = imread( argv[2]);// , CV_LOAD_IMAGE_GRAYSCALE );
 
 	  cvtColor(img_1, hsv_img1, COLOR_BGR2HSV);
 		cvtColor(img_2, hsv_img2, COLOR_BGR2HSV);
-    inRange(hsv_img1, Scalar(0, 120, 120), Scalar(30, 255, 255), mask_img1);
-		inRange(hsv_img1, Scalar(0, 120, 120), Scalar(30, 255, 255), mask_img2);
-
+    inRange(hsv_img1, Scalar(0, 120, 120), Scalar(60, 255, 255), mask_img1);
+		inRange(hsv_img2, Scalar(50, 100, 100), Scalar(70, 255, 255), mask_img2);
+		//lower_green = np.array([50, 100, 10 0])
+		//upper_green = np.array([70, 255, 255])
     //11     lower_green = np.array([0, 0, 0])
     ///12     upper_green = np.array([60, 255, 255])
     //13     mask = cv2.inRange(hsv, lower_green, upper_green)
@@ -51,8 +52,8 @@ int main( int argc, char** argv )
   //-- Draw keypoints
   Mat img_keypoints_1; Mat img_keypoints_2;
 
-  drawKeypoints( img_1, keypoints_1, img_keypoints_1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
-  drawKeypoints( img_2, keypoints_2, img_keypoints_2, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+  drawKeypoints( mask_img1, keypoints_1, img_keypoints_1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+  drawKeypoints( mask_img2, keypoints_2, img_keypoints_2, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
   resize(img_keypoints_1, img_keypoints_1, Size(0, 0), 0.35, 0.35, INTER_CUBIC);
   resize(img_keypoints_2, img_keypoints_2, Size(0, 0), 0.35, 0.35);
   //-- Show detected (drawn) keypoints
